@@ -26,7 +26,8 @@ module.exports = {
     
     const user = await userSchema.findById(userViewAble.user.id);
     if(!user) return message.channel.send('`Error 404` - User Has Not Registered Yet.')
-    
+    let badge = ""
+    if(user.verified) badge = "<:verified:594234862806761481>"
     const upload = await uploadSchema.find({id: userViewAble.user.id})
     
     const liked = [];
@@ -43,10 +44,10 @@ module.exports = {
         
     const profile = new Discord.RichEmbed().setAuthor(userViewAble.user.username+'\'s Profile', userViewAble.user.displayAvatarURL)
     .setColor('#7289da').setTimestamp()
-    .addField('Username', '`@'+userViewAble.displayName+'`', true).addField('Unique Tag', `\`${userViewAble.user.tag}\``, true)
+    .addField('Username', '`@'+userViewAble.displayName+'`'+badge, true).addField('Unique Tag', `\`${userViewAble.user.tag}\``, true)
     .addField('Total Uploads', `\`${user.uploads.length}\``, true).addField('Total Followers', `\`${user.followers.length}\``, true)
     .addField('Most Liked Upload', '`'+mostLikedDoc.likes.length+' Likes`\n[Most Liked Upload\'s Image URL]('+mostLikedDoc.url+')', true).setThumbnail(userViewAble.user.avatarURL)
-    .setFooter('React To Follow This person | Un-Verified Account', 'https://cdn.discordapp.com/emojis/446704973628309515.png');
+    .setFooter('React To Follow This person', 'https://cdn.discordapp.com/emojis/446704973628309515.png');
     
     if(user.intro !== '') profile.setDescription('```prolog\n'+user.intro+'```')
     const msg = await message.channel.send(profile);
