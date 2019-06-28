@@ -28,7 +28,7 @@ Commands
 | Name | Description | Usage | Example |
 |------| ----------- | ----- | ------- |
 |+register| Creates Your Account | +register | +register|
-|+upload| Uploads your attachment your images (attachment or link)| +upload <link>| +upload https://cdn.xyz.com|
+|+upload| Uploads your gifs or images (attachment or link)| +upload <link>| +upload https://cdn.xyz.com|
 |+view| View Your's or others upload | +view @Mention | +view Ashutosh|
 |+intro| Sets your bio for profile| +intro <intro\|reset>| +intro #Hackweek|
 |+profile| View your or others profile | +profile @mention | +profile @Ashutosh|
